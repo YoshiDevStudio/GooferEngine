@@ -24,6 +24,7 @@
     <ClInclude Include="src\Goofer\Application.h" />
     <ClInclude Include="src\Goofer\Core.h" />
     <ClInclude Include="src\Goofer\EntryPoint.h" />
+    <ClInclude Include="src\Goofer\MulticastDelegate.h" />
     <ClInclude Include="src\Goofer\Test.h" />
   </ItemGroup>
   <ItemGroup>
