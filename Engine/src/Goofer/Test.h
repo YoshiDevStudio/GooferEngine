@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
+#include "Object.h"
 namespace Goofer
 {
-	class GOOFER_API Test
+	class Test : public Object
 	{
 	public:
 		Test()

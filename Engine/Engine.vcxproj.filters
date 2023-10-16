@@ -33,12 +33,15 @@
     <ClInclude Include="src\Goofer\Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Goofer\MulticastDelegate.h">
+    <ClInclude Include="src\Goofer\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Goofer\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Goofer\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
