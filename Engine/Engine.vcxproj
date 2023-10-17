@@ -103,6 +103,7 @@
   <ItemGroup>
     <ClInclude Include="src\Goofer.h" />
     <ClInclude Include="src\Goofer\Application.h" />
+    <ClInclude Include="src\Goofer\Array.h" />
     <ClInclude Include="src\Goofer\Core.h" />
     <ClInclude Include="src\Goofer\Delegate.h" />
     <ClInclude Include="src\Goofer\EntryPoint.h" />

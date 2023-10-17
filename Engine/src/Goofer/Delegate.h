@@ -20,8 +20,6 @@ namespace Goofer
 			if (pFunction == nullptr)
 				return;
 
-			std::cout << "Invoking" << std::endl;
-
 			(*funcClass.*pFunction)(parameters...);
 		}
 
@@ -30,6 +28,8 @@ namespace Goofer
 		returnType(classType::*pFunction)(args...);
 	};
 
+	//Can only hold delegates if they have all same types
+	//if classType is base class with a virtual function and clss is a derived class that has overriden the virtual function it will call the overriden function
 	template <typename classType, typename returnType, typename... args> class MulticastDelegate : public Object
 	{
 	public:
@@ -37,29 +37,46 @@ namespace Goofer
 		{
 
 		}
-		~MulticastDelegate() = default;
+		~MulticastDelegate()
+		{
+			funcClasses.clear();
+			pFunctions.clear();
+			delete *funcClasses;
+			delete *pFunctions;
+		}
 
+		//Adds function pointer to List
 		void AddDelegate(classType* clss, returnType(classType::* func)(args...))
 		{
 			funcClasses.push_back(clss);
-			delegates.push_back(func);
+			pFunctions.push_back(func);
+		}
 
+		void RemoveDelegate(classType* clss, returnType(classType::* func)(args...))
+		{
+			for (int i = 0; i < pFunctions.size(); i++)
+			{
+				if (clss == funcClasses[i] || func == pFunctions[i])
+				{
+					funcClasses.erase(funcClasses.begin() + i);
+					pFunctions.erase(pFunctions.begin() + i);
+					return;
+				}
+			}
 		}
 
 		void Invoke(args... parameters)
 		{
-			std::cout << "Invoking" << std::endl;
-
-			for (int i = 0; i < delegates.size(); i++)
+			for (int i = 0; i < pFunctions.size(); i++)
 			{
-				(funcClasses[i]->*delegates[i])(parameters...);
+				(funcClasses[i]->*pFunctions[i])(parameters...);
 			}
 		}
 	private:
 
 		std::vector<classType*> funcClasses;
 
-		std::vector<returnType(classType::*)(args...)> delegates;
+		std::vector<returnType(classType::*)(args...)> pFunctions;
 	};
 }
 

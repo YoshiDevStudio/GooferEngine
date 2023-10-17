@@ -10,6 +10,9 @@
     <ClInclude Include="src\Goofer\Application.h">
       <Filter>Goofer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Goofer\Array.h">
+      <Filter>Goofer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Goofer\Core.h">
       <Filter>Goofer</Filter>
     </ClInclude>

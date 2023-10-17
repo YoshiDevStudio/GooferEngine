@@ -1,12 +1,10 @@
 #pragma once
 #include <iostream>
-class Object
+namespace Goofer
 {
-public:
-	//This is just for testing purposes
-	virtual void Print(int num1)
+	class Object
 	{
-		std::cout << "Print Virtual" << std::endl;
-	}
-};
+
+	};
+}
 
