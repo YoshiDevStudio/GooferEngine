@@ -107,12 +107,16 @@
     <ClInclude Include="src\Goofer\Core.h" />
     <ClInclude Include="src\Goofer\Delegate.h" />
     <ClInclude Include="src\Goofer\EntryPoint.h" />
+    <ClInclude Include="src\Goofer\Log.h" />
     <ClInclude Include="src\Goofer\Object.h" />
     <ClInclude Include="src\Goofer\Test.h" />
+    <ClInclude Include="src\Goofer\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Goofer\Application.cpp" />
+    <ClCompile Include="src\Goofer\Log.cpp" />
     <ClCompile Include="src\Goofer\Object.cpp" />
+    <ClCompile Include="src\Goofer\Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

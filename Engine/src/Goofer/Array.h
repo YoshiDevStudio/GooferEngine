@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include "Core.h"
 namespace Goofer
 {
 	template <typename T> class Array
@@ -316,10 +317,23 @@ namespace Goofer
 			//index is negative
 			if (index < 0)
 			{
+				if (-index > Size())
+				{
+					LOG_ERROR("Index was out of Array bounds");
+					return Size();
+				}
 				//Add since index is negative
 				return (Size() + index);
 			}
-			else return index;
+			else
+			{
+				if (index > Size())
+				{
+					LOG_ERROR("Index was out of Array bounds");
+					return Size();
+				}
+				return index;
+			}
 		}
 
 		std::vector<T> m_arr;

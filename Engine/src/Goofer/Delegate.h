@@ -1,10 +1,9 @@
 #pragma once
 #include <vector>
 #include <iostream>
-#include "Object.h"
 namespace Goofer
 {
-	template <typename classType, typename returnType, typename... args> class Delegate : public Object
+	template <typename classType, typename returnType, typename... args> class Delegate
 	{
 	public:
 		
@@ -30,7 +29,7 @@ namespace Goofer
 
 	//Can only hold delegates if they have all same types
 	//if classType is base class with a virtual function and clss is a derived class that has overriden the virtual function it will call the overriden function
-	template <typename classType, typename returnType, typename... args> class MulticastDelegate : public Object
+	template <typename classType, typename returnType, typename... args> class MulticastDelegate
 	{
 	public:
 		MulticastDelegate()

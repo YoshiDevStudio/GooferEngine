@@ -22,10 +22,16 @@
     <ClInclude Include="src\Goofer\EntryPoint.h">
       <Filter>Goofer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Goofer\Log.h">
+      <Filter>Goofer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Goofer\Object.h">
       <Filter>Goofer</Filter>
     </ClInclude>
     <ClInclude Include="src\Goofer\Test.h">
+      <Filter>Goofer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Goofer\Time.h">
       <Filter>Goofer</Filter>
     </ClInclude>
   </ItemGroup>
@@ -33,7 +39,13 @@
     <ClCompile Include="src\Goofer\Application.cpp">
       <Filter>Goofer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Goofer\Log.cpp">
+      <Filter>Goofer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Goofer\Object.cpp">
+      <Filter>Goofer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Goofer\Time.cpp">
       <Filter>Goofer</Filter>
     </ClCompile>
   </ItemGroup>

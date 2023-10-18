@@ -1,10 +1,10 @@
 #pragma once
-#include <iostream>
+#include "Core.h"
 namespace Goofer
 {
 	class Object
 	{
-
+		
 	};
 }
 
