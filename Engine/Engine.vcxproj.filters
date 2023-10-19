@@ -22,6 +22,9 @@
     <ClInclude Include="src\Goofer\EntryPoint.h">
       <Filter>Goofer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Goofer\EventListener.h">
+      <Filter>Goofer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Goofer\Log.h">
       <Filter>Goofer</Filter>
     </ClInclude>
@@ -34,9 +37,15 @@
     <ClInclude Include="src\Goofer\Time.h">
       <Filter>Goofer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Goofer\Window.h">
+      <Filter>Goofer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Goofer\Application.cpp">
+      <Filter>Goofer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Goofer\EventListener.cpp">
       <Filter>Goofer</Filter>
     </ClCompile>
     <ClCompile Include="src\Goofer\Log.cpp">
@@ -46,6 +55,12 @@
       <Filter>Goofer</Filter>
     </ClCompile>
     <ClCompile Include="src\Goofer\Time.cpp">
+      <Filter>Goofer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Goofer\Window.cpp">
+      <Filter>Goofer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Goofer\glad.c">
       <Filter>Goofer</Filter>
     </ClCompile>
   </ItemGroup>

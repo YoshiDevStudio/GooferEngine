@@ -20,7 +20,8 @@ project "Engine"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/src/**.c"
     }
 
     includedirs
@@ -28,9 +29,20 @@ project "Engine"
         "include"
     }
 
+    libdirs
+    {
+        "lib"
+    }
+
+    links
+    {
+        "opengl32.lib",
+        "glfw3.lib"
+    }
+
     filter "system:windows"
         cppdialect "C++20"
-        staticruntime "On"
+        staticruntime "Off"
         systemversion "10.0"
 
         defines
@@ -46,10 +58,12 @@ project "Engine"
 
     filter "configurations:Debug"
         defines "GOOF_DEBUG"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "GOOF_RELEASE"
+        runtime "Release"
         optimize "On"
 
 project "App"

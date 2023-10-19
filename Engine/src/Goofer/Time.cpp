@@ -2,6 +2,7 @@
 
 namespace Goofer
 {
+	float Time::deltaTime;
 	std::string Time::GetLocalTime()
 	{
 		time_t currentTime = time(NULL);

@@ -14,13 +14,13 @@ namespace Goofer
 
 	void Application::Run()
 	{
-		LOG_ERROR("Error");
-		LOG_WARNING("Warning");
-		LOG("Normal");
-		LOG_VERBOSE("Verbose");
-		while (true)
+		EventListener* eventListener = new EventListener();
+		Window* window = new Window(eventListener, Window::RenderingAPI::OpenGL);
+		window->InitWindow(800, 600);
+		while (window->ShouldWindowClose())
 		{
-			
+			window->UpdateWindow();
 		}
+		window->~Window();
 	}
 }

@@ -9,6 +9,7 @@ namespace Goofer
 	{
 	public:
 		static std::string GetLocalTime();
+		static float deltaTime;
 	};
 }
 
