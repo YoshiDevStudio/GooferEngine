@@ -1,20 +1,30 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <any>
 namespace Goofer
 {
-	template <typename classType, typename returnType, typename... args> class Delegate
+	template <typename returnType, typename... args>
+	class DelegateBase
+	{
+	public:
+		virtual returnType Invoke(args... parameters) = 0;
+	};
+
+	//if classType is base class with a virtual function and clss is a derived class that has overriden the virtual function it will call the overriden function
+	template <typename classType, typename returnType, typename... args> class Delegate : public DelegateBase<returnType, args...>
 	{
 	public:
 		
-		Delegate(classType* clss, returnType(classType::* func)(args...))
+		Delegate(classType* clss, returnType(classType::* func)(args...), const char* name = nullptr)
 		{
 			funcClass = clss;
 			pFunction = func;
+			baseTypeName = name;
 		}
 		~Delegate() = default;
 
-		void Invoke(args... parameters)
+		returnType Invoke(args... parameters) override
 		{
 			if (pFunction == nullptr)
 				return;
@@ -22,14 +32,14 @@ namespace Goofer
 			(*funcClass.*pFunction)(parameters...);
 		}
 
+		const char* baseTypeName;
 	private:
 		classType* funcClass;
 		returnType(classType::*pFunction)(args...);
 	};
 
-	//Can only hold delegates if they have all same types
-	//if classType is base class with a virtual function and clss is a derived class that has overriden the virtual function it will call the overriden function
-	template <typename classType, typename returnType, typename... args> class MulticastDelegate
+	//Can only hold delegates if they have same returnType and args...
+	template <typename returnType, typename... args> class MulticastDelegate
 	{
 	public:
 		MulticastDelegate()
@@ -38,29 +48,34 @@ namespace Goofer
 		}
 		~MulticastDelegate()
 		{
-			funcClasses.clear();
 			pFunctions.clear();
-			delete *funcClasses;
-			delete *pFunctions;
 		}
 
 		//Adds function pointer to List
+		template<typename classType>
 		void AddDelegate(classType* clss, returnType(classType::* func)(args...))
 		{
-			funcClasses.push_back(clss);
-			pFunctions.push_back(func);
+			auto del = new Delegate<classType, returnType, args...>(clss, func);
+			auto baseDel = new Delegate<DelegateBase<returnType, args...>, returnType, args...>(del, &DelegateBase<returnType, args...>::Invoke, typeid(clss).name());
+
+			classesPtr.push_back(clss);
+			pFunctions.push_back(*baseDel);
 		}
 
+		template<typename classType>
 		void RemoveDelegate(classType* clss, returnType(classType::* func)(args...))
 		{
 			for (int i = 0; i < pFunctions.size(); i++)
 			{
-				if (clss == funcClasses[i] || func == pFunctions[i])
+				if (typeid(clss).name() == pFunctions[i].baseTypeName)
 				{
-					funcClasses.erase(funcClasses.begin() + i);
-					pFunctions.erase(pFunctions.begin() + i);
-					return;
+					if (clss == std::any_cast<classType*>(classesPtr[i]))
+					{
+						pFunctions.erase(pFunctions.begin() + i);
+						return;
+					}
 				}
+				
 			}
 		}
 
@@ -68,14 +83,12 @@ namespace Goofer
 		{
 			for (int i = 0; i < pFunctions.size(); i++)
 			{
-				(funcClasses[i]->*pFunctions[i])(parameters...);
+				pFunctions[i].Invoke(parameters...);
 			}
 		}
 	private:
-
-		std::vector<classType*> funcClasses;
-
-		std::vector<returnType(classType::*)(args...)> pFunctions;
+		std::vector<std::any> classesPtr;
+		std::vector<Delegate<DelegateBase<returnType, args...>, returnType, args...>> pFunctions;
 	};
 }
 
