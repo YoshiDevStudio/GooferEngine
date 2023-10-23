@@ -110,19 +110,19 @@
     <ClInclude Include="src\Goofer\Array.h" />
     <ClInclude Include="src\Goofer\Core.h" />
     <ClInclude Include="src\Goofer\Delegate.h" />
+    <ClInclude Include="src\Goofer\Entity.h" />
     <ClInclude Include="src\Goofer\EntryPoint.h" />
     <ClInclude Include="src\Goofer\EventListener.h" />
     <ClInclude Include="src\Goofer\Log.h" />
-    <ClInclude Include="src\Goofer\Object.h" />
     <ClInclude Include="src\Goofer\Test.h" />
     <ClInclude Include="src\Goofer\Time.h" />
     <ClInclude Include="src\Goofer\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Goofer\Application.cpp" />
+    <ClCompile Include="src\Goofer\Entity.cpp" />
     <ClCompile Include="src\Goofer\EventListener.cpp" />
     <ClCompile Include="src\Goofer\Log.cpp" />
-    <ClCompile Include="src\Goofer\Object.cpp" />
     <ClCompile Include="src\Goofer\Time.cpp" />
     <ClCompile Include="src\Goofer\Window.cpp" />
     <ClCompile Include="src\Goofer\glad.c" />

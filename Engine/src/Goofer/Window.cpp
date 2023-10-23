@@ -17,6 +17,7 @@ namespace Goofer
 			glfwTerminate();
 			break;
 		}
+		delete windowEventDel;
 		delete mouseEventDel;
 		delete keyboardEventDel;
 		LOG_VERBOSE("Window Closed")

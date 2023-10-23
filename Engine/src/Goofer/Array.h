@@ -7,15 +7,10 @@ namespace Goofer
 	template <typename T> class Array
 	{
 	public:
-		Array()
-		{
-
-		}
+		Array() = default;
 		~Array()
 		{
 			m_arr.clear();
-			delete &m_arr;
-			delete &readonly;
 		}
 
 		T& operator[](int index)
@@ -112,10 +107,7 @@ namespace Goofer
 				return;
 
 			int newIndex = GetIndexSign(index);
-			if (m_arr[newIndex] != NULL)
-			{
-				m_arr.erase(m_arr.begin() + newIndex);
-			}
+			m_arr.erase(m_arr.begin() + newIndex);
 		}
 		//Removes all items
 		void Clear()
@@ -183,6 +175,8 @@ namespace Goofer
 		//Gets Amount of items in Array
 		int Size()
 		{
+			if (m_arr.empty())
+				return 0;
 			return m_arr.size();
 		}
 		//Looks through array for item matching obj and returns its index

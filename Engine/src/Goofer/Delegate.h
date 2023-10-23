@@ -60,6 +60,9 @@ namespace Goofer
 
 			classesPtr.push_back(clss);
 			pFunctions.push_back(*baseDel);
+
+			delete del;
+			delete baseDel;
 		}
 
 		template<typename classType>
